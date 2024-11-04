@@ -303,7 +303,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 779356481}
-  - component: {fileID: 779356480}
   m_Layer: 0
   m_Name: SpawnPoint2
   m_TagString: Untagged
@@ -311,22 +310,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &779356480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779356479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  spawnInterval: 3
-  enemiesPerWave: 5
-  spawnPoints: []
 --- !u!4 &779356481
 Transform:
   m_ObjectHideFlags: 0
@@ -336,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 779356479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.02, y: 6.02, z: 0}
+  m_LocalPosition: {x: 1.02, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -351,7 +334,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014404010}
-  - component: {fileID: 1014404009}
   m_Layer: 0
   m_Name: SpawnPoint5
   m_TagString: Untagged
@@ -359,22 +341,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1014404009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014404008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  spawnInterval: 3
-  enemiesPerWave: 5
-  spawnPoints: []
 --- !u!4 &1014404010
 Transform:
   m_ObjectHideFlags: 0
@@ -384,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 1014404008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.09, y: 6.07, z: 0}
+  m_LocalPosition: {x: 14.09, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -491,7 +457,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545103421}
-  - component: {fileID: 1545103420}
   m_Layer: 0
   m_Name: SpawnPoint4
   m_TagString: Untagged
@@ -499,22 +464,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1545103420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545103419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  spawnInterval: 3
-  enemiesPerWave: 5
-  spawnPoints: []
 --- !u!4 &1545103421
 Transform:
   m_ObjectHideFlags: 0
@@ -524,7 +473,7 @@ Transform:
   m_GameObject: {fileID: 1545103419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.53, y: 6.09, z: 0}
+  m_LocalPosition: {x: 9.53, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -539,7 +488,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1561120424}
-  - component: {fileID: 1561120423}
   m_Layer: 0
   m_Name: SpawnPoint3
   m_TagString: Untagged
@@ -547,22 +495,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1561120423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561120422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  spawnInterval: 3
-  enemiesPerWave: 5
-  spawnPoints: []
 --- !u!4 &1561120424
 Transform:
   m_ObjectHideFlags: 0
@@ -572,7 +504,7 @@ Transform:
   m_GameObject: {fileID: 1561120422}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.77, y: 6.04, z: 0}
+  m_LocalPosition: {x: 5.17, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -587,7 +519,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1589697591}
-  - component: {fileID: 1589697590}
   m_Layer: 0
   m_Name: SpawnPoint1
   m_TagString: Untagged
@@ -595,22 +526,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1589697590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589697589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  spawnInterval: 3
-  enemiesPerWave: 5
-  spawnPoints: []
 --- !u!4 &1589697591
 Transform:
   m_ObjectHideFlags: 0
@@ -620,7 +535,7 @@ Transform:
   m_GameObject: {fileID: 1589697589}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.86, y: 6.02, z: 0}
+  m_LocalPosition: {x: -2.86, y: 7, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -655,9 +570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5019508192665550588}
+  enemyPrefab: {fileID: 5632670622632045077, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
   spawnInterval: 3
-  enemiesPerWave: 5
+  delayBetweenEnemies: 0.5
   spawnPoints:
   - {fileID: 1589697591}
   - {fileID: 779356481}
@@ -734,77 +649,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5632670622632045077, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5019508192665550589}
-    - targetCorrespondingSourceObject: {fileID: 5632670622632045077, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5019508192665550591}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
---- !u!1 &5019508192665550588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5632670622632045077, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
-  m_PrefabInstance: {fileID: 5019508192665550587}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &5019508192665550589
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019508192665550588}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &5019508192665550591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019508192665550588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce3f7eacfe1d22e41adc70c1d75d3dd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
