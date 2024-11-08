@@ -1,23 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;  // Vitesse de déplacement
-    private Vector2 movement;  // Variable pour stocker le déplacement
+    [Header("Player Movement Settings")]
+    [SerializeField] private float speed = 5f; // Adjustable movement speed
 
-    void Update()
+    private void Update()
     {
-        // Récupérer les inputs du joueur
-        movement.x = Input.GetAxis("Horizontal");  // Droite / Gauche
-        movement.y = Input.GetAxis("Vertical");    // Haut / Bas
-    }
+        // Get input from Horizontal and Vertical axes (WASD or Arrow keys)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-    void FixedUpdate()
-    {
-        // Appliquer le mouvement au Rigidbody
-        transform.Translate(movement * moveSpeed * Time.deltaTime);
+        // Calculate movement direction
+        Vector3 direction = new Vector3(horizontal, vertical, 0f).normalized;
+
+        // Move the player
+        transform.position += direction * speed * Time.deltaTime;
     }
 }
-
