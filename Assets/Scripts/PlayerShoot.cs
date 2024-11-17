@@ -1,39 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
-    private float timerShoot = 0;
-    private bool canShoot = true;
-    [SerializeField] public float cooldown;
+    [SerializeField] private GameObject basicBulletPrefab;
+    [SerializeField] public float basicCooldown;
+    [SerializeField] private GameObject piecingBulletPrefab;
+    [SerializeField] public float piercingCooldown;
+    private float _timerShoot;
+    private bool _canShoot = true;
     private void Update()
     {
-        if (canShoot == false)
+        if (_canShoot == false)
         {
-            if (timerShoot > 0)
+            if (_timerShoot > 0)
             {
-                timerShoot -= Time.deltaTime;
+                _timerShoot -= Time.deltaTime;
             }
             else
             {
-                canShoot = true;
+                _canShoot = true;
             }
         }
-        if (Input.GetKey(KeyCode.Space)) //Down
+        if (Input.GetKey(KeyCode.Space)) 
         {
-            Shoot();
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                return;
+            } else if (Input.GetKey(KeyCode.LeftAlt))
+            {
+                
+            }
+            Shoot();// basic shoot
         }
     }
 
     private void Shoot()
     {
-        if (canShoot)
+        if (_canShoot)
         {
-            Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            canShoot = false;
-            timerShoot = cooldown;
+            Instantiate(basicBulletPrefab, transform.position, Quaternion.identity);
+            _canShoot = false;
+            _timerShoot = basicCooldown;
         }
     }
 }
+
+//faire le cd par type de balle

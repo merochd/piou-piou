@@ -6,6 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 10f;
     [SerializeField] private float bulletLifetime = 3f;
+    [SerializeField] public int bulletType = 0; // 0 = basic / 1 = piercing
 
     private void Start()
     {

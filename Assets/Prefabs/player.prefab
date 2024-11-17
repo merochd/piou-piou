@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6998835792286636820}
   - component: {fileID: 2251307836608651197}
+  - component: {fileID: -8857407694311577272}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -130,3 +131,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &-8857407694311577272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911677119436761421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1f2faf66606dd4c9dc329b5fe08665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicBulletPrefab: {fileID: 3946024901877527687, guid: 0609c7edee2e18a4e85752721b86f0c4, type: 3}
+  basicCooldown: 0

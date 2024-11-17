@@ -359,30 +359,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6516dff4e22c8134e9b817ae4f754a75, type: 3}
---- !u!1 &1642505037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 911677119436761421, guid: d88a5775e89233547be968768b0fbcae, type: 3}
-  m_PrefabInstance: {fileID: 7376993649877338664}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1642505040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6998835792286636820, guid: d88a5775e89233547be968768b0fbcae, type: 3}
   m_PrefabInstance: {fileID: 7376993649877338664}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1642505041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642505037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1f2faf66606dd4c9dc329b5fe08665, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3946024901877527687, guid: 0609c7edee2e18a4e85752721b86f0c4, type: 3}
-  cooldown: 0.2
 --- !u!1001 &1613802070188704854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442,8 +423,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9194502624876189674, guid: edfbd6be32b861e468499cc84eb31cdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1613802070188704856}
   m_SourcePrefab: {fileID: 100100000, guid: edfbd6be32b861e468499cc84eb31cdb, type: 3}
+--- !u!1 &1613802070188704855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9194502624876189674, guid: edfbd6be32b861e468499cc84eb31cdb, type: 3}
+  m_PrefabInstance: {fileID: 1613802070188704854}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1613802070188704856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613802070188704855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83943569a122cdb4da691443ba76c0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 10
+  bulletLifetime: 3
+  bulletType: 1
 --- !u!1001 &7376993649877338664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -452,6 +456,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8857407694311577272, guid: d88a5775e89233547be968768b0fbcae, type: 3}
+      propertyPath: basicCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8857407694311577272, guid: d88a5775e89233547be968768b0fbcae, type: 3}
+      propertyPath: pearcingCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 911677119436761421, guid: d88a5775e89233547be968768b0fbcae, type: 3}
       propertyPath: m_Name
       value: player
@@ -516,18 +528,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -536,10 +536,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6998835792286636820, guid: d88a5775e89233547be968768b0fbcae, type: 3}
       insertIndex: -1
       addedObject: {fileID: 197870210}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 911677119436761421, guid: d88a5775e89233547be968768b0fbcae, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1642505041}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88a5775e89233547be968768b0fbcae, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
