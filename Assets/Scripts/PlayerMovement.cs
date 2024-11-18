@@ -8,13 +8,13 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Get input from Horizontal and Vertical axes (WASD or Arrow keys)
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        var horizontal = Input.GetAxisRaw("Horizontal"); // add clamp
+        var vertical = Input.GetAxisRaw("Vertical"); // add clamp
 
         // Calculate movement direction
-        Vector3 direction = new Vector3(horizontal, vertical, 0f).normalized;
+        var direction = new Vector3(horizontal, vertical, 0f).normalized;
 
         // Move the player
-        transform.position += direction * speed * Time.deltaTime;
+        transform.position += direction * (speed * Time.deltaTime);
     }
 }
