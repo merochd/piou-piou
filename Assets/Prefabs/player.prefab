@@ -144,4 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicBulletPrefab: {fileID: 3946024901877527687, guid: 0609c7edee2e18a4e85752721b86f0c4, type: 3}
-  basicCooldown: 0
+  basicCooldown: 0.05
+  piecingBulletPrefab: {fileID: 9194502624876189674, guid: edfbd6be32b861e468499cc84eb31cdb, type: 3}
+  piercingCooldown: 1

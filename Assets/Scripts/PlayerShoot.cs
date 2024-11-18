@@ -27,10 +27,11 @@ public class PlayerShoot : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                ShootPiercing();
                 return;
             } else if (Input.GetKey(KeyCode.LeftAlt))
             {
-                
+                return;
             }
             Shoot();// basic shoot
         }
@@ -43,6 +44,15 @@ public class PlayerShoot : MonoBehaviour
             Instantiate(basicBulletPrefab, transform.position, Quaternion.identity);
             _canShoot = false;
             _timerShoot = basicCooldown;
+        }
+    }
+    private void ShootPiercing()
+    {
+        if (_canShoot)
+        {
+            Instantiate(piecingBulletPrefab, transform.position, Quaternion.identity);
+            _canShoot = false;
+            _timerShoot = piercingCooldown;
         }
     }
 }
