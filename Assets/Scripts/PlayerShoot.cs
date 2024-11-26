@@ -8,19 +8,26 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] public float basicCooldown;
     [SerializeField] private GameObject piecingBulletPrefab;
     [SerializeField] public float piercingCooldown;
-    private float _timerShoot;
-    private bool _canShoot = true;
+    [SerializeField] private GameObject shieldPrefab;
+    [SerializeField] public float shieldCooldown;
+    public float timerShoot;
+    public float abilityTimer;
+    public bool canShoot = true;
     private void Update()
     {
-        if (_canShoot == false)
+        if (canShoot == false)
         {
-            if (_timerShoot > 0)
+            if (timerShoot > 0)
             {
-                _timerShoot -= Time.deltaTime;
+                timerShoot -= Time.deltaTime;
             }
             else
             {
-                _canShoot = true;
+                canShoot = true;
+            }
+            if (abilityTimer > 0)
+            {
+                abilityTimer -= Time.deltaTime;
             }
         }
         if (Input.GetKey(KeyCode.Space)) 
@@ -29,30 +36,39 @@ public class PlayerShoot : MonoBehaviour
             {
                 ShootPiercing();
                 return;
-            } else if (Input.GetKey(KeyCode.LeftAlt))
-            {
-                return;
             }
             Shoot();// basic shoot
+        }
+        if (Input.GetKey(KeyCode.B))
+        {
+            Shield();
         }
     }
 
     private void Shoot()
     {
-        if (_canShoot)
+        if (canShoot)
         {
             Instantiate(basicBulletPrefab, transform.position, Quaternion.identity);
-            _canShoot = false;
-            _timerShoot = basicCooldown;
+            canShoot = false;
+            timerShoot = basicCooldown;
+        }
+    }
+    private void Shield()
+    {
+        if (abilityTimer <= 0)
+        {
+            Instantiate(shieldPrefab, transform.position, Quaternion.identity);
+            abilityTimer = shieldCooldown;
         }
     }
     private void ShootPiercing()
     {
-        if (_canShoot)
+        if (canShoot)
         {
             Instantiate(piecingBulletPrefab, transform.position, Quaternion.identity);
-            _canShoot = false;
-            _timerShoot = piercingCooldown;
+            canShoot = false;
+            timerShoot = piercingCooldown;
         }
     }
 }
