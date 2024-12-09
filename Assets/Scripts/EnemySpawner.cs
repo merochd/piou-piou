@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;       // Préfabriqué pour les ennemis
+    public GameObject enemyPrefab;         // Préfabriqué pour les ennemis
+    public Transform[] spawnPoints;        // Points de spawn (grille)
     public float initialSpawnInterval = 6f; // Intervalle entre les vagues au début
     public float delayBetweenEnemies = 1f;  // Délai entre chaque ennemi dans une vague
-    public Transform[] spawnPoints;      // Points de spawn des ennemis
-    public int totalLevels = 5;          // Nombre total de niveaux
-    public int wavesPerLevel = 10;       // Nombre de vagues par niveau
+    public int totalLevels = 5;            // Nombre total de niveaux
+    public int wavesPerLevel = 10;         // Nombre de vagues par niveau
 
-    private int currentLevel = 1;        // Niveau actuel
-    private float spawnInterval;         // Intervalle dynamique entre les vagues
+    private int currentLevel = 1;          // Niveau actuel
+    private float spawnInterval;           // Intervalle dynamique entre les vagues
 
     private void Start()
     {
@@ -27,8 +27,8 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int wave = 1; wave <= wavesPerLevel; wave++)
             {
-                // Génère la vague actuelle avec difficulté croissante
-                yield return StartCoroutine(SpawnWave(wave));
+                // Génère la vague actuelle en grille
+                yield return StartCoroutine(SpawnWaveInGrid(wave));
 
                 // Réduit le temps entre les vagues pour augmenter la difficulté
                 spawnInterval *= 0.95f; // Réduit de 5 % pour chaque vague
@@ -39,20 +39,27 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnWave(int waveNumber)
+    IEnumerator SpawnWaveInGrid(int waveNumber)
     {
-        // Le nombre d'ennemis augmente avec le numéro de la vague
-        int enemyCount = waveNumber * 2; // Par exemple, chaque vague ajoute 2 ennemis supplémentaires
+        // Configuration de la grille : nombre de lignes et colonnes
+        int rows = 2; // Modifier pour plus de lignes
+        int cols = spawnPoints.Length / rows; // Nombre de colonnes calculé en fonction des spawn points
 
-        // Le délai entre les ennemis diminue légèrement à chaque vague
+        // Délai entre chaque ennemi (peut être ajusté avec la difficulté)
         float currentDelay = delayBetweenEnemies * Mathf.Pow(0.95f, waveNumber - 1);
 
-        // Boucle pour créer tous les ennemis de la vague
-        for (int i = 0; i < enemyCount; i++)
+        // Parcourt la grille et instancie les ennemis
+        for (int row = 0; row < rows; row++)
         {
-            int spawnIndex = Random.Range(0, spawnPoints.Length);
-            Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-            yield return new WaitForSeconds(currentDelay); // Temps d'attente entre les ennemis
+            for (int col = 0; col < cols; col++)
+            {
+                int spawnIndex = row * cols + col;
+                if (spawnIndex < spawnPoints.Length) // Vérifie que l'index reste valide
+                {
+                    Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
+                    yield return new WaitForSeconds(currentDelay); // Temps d'attente entre chaque ennemi
+                }
+            }
         }
     }
 }

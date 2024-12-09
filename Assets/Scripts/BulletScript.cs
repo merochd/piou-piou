@@ -20,9 +20,7 @@ public class BulletScript : MonoBehaviour
     {
         if (other.CompareTag("enemy"))
         {
-            ScoreManager.AddScore(10); // Augmente le score
-
-            // Si c'est une balle basique, détruis la balle
+			 // Si c'est une balle basique, détruis la balle
             if (bulletType == 0)
             {
                 Destroy(gameObject);

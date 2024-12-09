@@ -21,7 +21,6 @@ public class EnemyMovement : MonoBehaviour
         // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
         if (other.CompareTag("projectile"))
         {
-            ScoreManager.AddScore(10);  // Augmente le score de 10 points (ou adapte la valeur comme tu le souhaites)
             Destroy(other.gameObject);  // Détruit le projectile
             Destroy(gameObject);  // Détruit l'ennemi
         }
