@@ -10,12 +10,12 @@ public class HomingEnemyController : MonoBehaviour
 
     [Header("Projectile Settings")]
     public GameObject projectilePrefab; // Préfab de projectile
-    public float projectileSpeed = 5f; // Vitesse du projectile
 
     private Camera mainCamera;
     private Vector3 targetPosition; // La position vers laquelle se déplacer
     private bool hasReachedTarget = false; // Vérifie si l'ennemi a atteint sa position cible
     private Transform player; // Référence au joueur
+
 
     void Start()
     {
@@ -43,13 +43,19 @@ public class HomingEnemyController : MonoBehaviour
         {
             MoveToTargetPosition();
         }
+        else
+        {
+            Vector3 directionToPlayer = (player.position - transform.position).normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
+            transform.rotation = targetRotation;
+        }
     }
 
     void SetRandomTargetPosition()
     {
         // Obtenir les limites de l'écran en coordonnées monde
         Vector3 screenBottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 screenTopRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        Vector3 screenTopRight = mainCamera.ViewportToWorldPoint(new Vector3(0.95f, 0.9f, 0));
 
         // Calculer les limites pour le tiers supérieur
         float minX = screenBottomLeft.x;
@@ -96,7 +102,6 @@ public class HomingEnemyController : MonoBehaviour
             Debug.LogWarning("Projectile prefab is not assigned, or player is missing!");
             return;
         }
-
         // Instancier le projectile
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
