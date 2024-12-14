@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using System;
 public class HomingEnemyController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -16,6 +16,7 @@ public class HomingEnemyController : MonoBehaviour
     private bool hasReachedTarget = false; // Vérifie si l'ennemi a atteint sa position cible
     private Transform player; // Référence au joueur
 
+    public event Action<GameObject> OnEnemyDeath;
 
     void Start()
     {
@@ -34,6 +35,12 @@ public class HomingEnemyController : MonoBehaviour
 
         // Définir une position cible aléatoire dans le tiers supérieur de l'écran
         SetRandomTargetPosition();
+    }
+    
+    public void Die()
+    {
+        OnEnemyDeath?.Invoke(gameObject);
+        Destroy(gameObject);
     }
 
     void Update()
@@ -64,8 +71,8 @@ public class HomingEnemyController : MonoBehaviour
         float maxY = screenTopRight.y;
 
         // Choisir une position aléatoire
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        float randomX = UnityEngine.Random.Range(minX, maxX);
+        float randomY = UnityEngine.Random.Range(minY, maxY);
 
         // Définir la position cible
         targetPosition = new Vector3(randomX, randomY, 0);
@@ -113,6 +120,19 @@ public class HomingEnemyController : MonoBehaviour
         if (projectileScript != null)
         {
             projectileScript.SetDirection(directionToPlayer);
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
+        if (other.CompareTag("Player"))
+        {
+            Destroy(other.gameObject);  // Détruit le player
+        }
+        if (other.CompareTag("projectile"))
+        {
+            Die();
         }
     }
 }
