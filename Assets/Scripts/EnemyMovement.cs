@@ -19,10 +19,9 @@ public class EnemyMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
-        if (other.CompareTag("projectile"))
+        if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);  // Détruit le projectile
-            Destroy(gameObject);  // Détruit l'ennemi
+            Destroy(other.gameObject);  // Détruit le player
         }
     }
 }
