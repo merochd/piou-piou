@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using System;
 
-public class EnemyController : MonoBehaviour
+public class HomingEnemyController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float screenTopFraction = 0.33f; // Le tiers supérieur de l'écran
@@ -16,20 +15,25 @@ public class EnemyController : MonoBehaviour
     private Camera mainCamera;
     private Vector3 targetPosition; // La position vers laquelle se déplacer
     private bool hasReachedTarget = false; // Vérifie si l'ennemi a atteint sa position cible
-    
-    public event Action<GameObject> OnEnemyDeath;
+    private Transform player; // Référence au joueur
 
     void Start()
     {
         mainCamera = Camera.main;
 
+        // Trouver le joueur dans la scène
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
+        {
+            Debug.LogWarning("A player object with the tag 'Player' is not found in the scene!");
+        }
+
         // Définir une position cible aléatoire dans le tiers supérieur de l'écran
         SetRandomTargetPosition();
-    }
-    public void Die()
-    {
-        OnEnemyDeath?.Invoke(gameObject);
-        Destroy(gameObject);
     }
 
     void Update()
@@ -54,8 +58,8 @@ public class EnemyController : MonoBehaviour
         float maxY = screenTopRight.y;
 
         // Choisir une position aléatoire
-        float randomX = UnityEngine.Random.Range(minX, maxX);
-        float randomY = UnityEngine.Random.Range(minY, maxY);
+        float randomX = Random.Range(minX, maxX);
+        float randomY = Random.Range(minY, maxY);
 
         // Définir la position cible
         targetPosition = new Vector3(randomX, randomY, 0);
@@ -87,31 +91,23 @@ public class EnemyController : MonoBehaviour
 
     void Shoot()
     {
-        if (projectilePrefab == null)
+        if (projectilePrefab == null || player == null)
         {
-            Debug.LogWarning("Projectile prefab is not assigned!");
+            Debug.LogWarning("Projectile prefab is not assigned, or player is missing!");
             return;
         }
 
         // Instancier le projectile
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
-        // Déplacer le projectile vers le bas avec son propre script
-    }
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
-        if (other.CompareTag("Player"))
+        // Calculer la direction vers le joueur
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+
+        // Appliquer la direction au projectile
+        HomingProjectileController projectileScript = projectile.GetComponent<HomingProjectileController>();
+        if (projectileScript != null)
         {
-            Destroy(other.gameObject);  // Détruit le player
+            projectileScript.SetDirection(directionToPlayer);
         }
     }
-    
-
-    
 }
-
-
-
-

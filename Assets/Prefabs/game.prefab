@@ -458,7 +458,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6595488812937576553}
-  - component: {fileID: 1135493473199546739}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -481,38 +480,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2541011911577136943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1135493473199546739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8749986348093064960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57df9ae7e36d804489a2563e715ce735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5632670622632045077, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
-  spawnPoints:
-  - {fileID: 7947019468566582874}
-  - {fileID: 4492533489297627760}
-  - {fileID: 3354309022911106035}
-  - {fileID: 2106298054544743468}
-  - {fileID: 7501503955401268745}
-  - {fileID: 2748827836150239105}
-  - {fileID: 4115113126137110000}
-  - {fileID: 2665929559960374589}
-  - {fileID: 1813455225142527702}
-  - {fileID: 2751397725939862338}
-  - {fileID: 2799046350513805009}
-  - {fileID: 6917212120858646262}
-  - {fileID: 9090030234942494338}
-  - {fileID: 8155252524372096151}
-  initialSpawnInterval: 6
-  delayBetweenEnemies: 0.5
-  totalLevels: 5
-  wavesPerLevel: 10
 --- !u!1 &8759046836679687933
 GameObject:
   m_ObjectHideFlags: 0
