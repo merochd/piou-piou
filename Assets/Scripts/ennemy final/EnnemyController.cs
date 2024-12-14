@@ -105,6 +105,10 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(other.gameObject);  // Détruit le player
         }
+        if (other.CompareTag("projectile"))
+        {
+            Die();
+        }
     }
     
 

@@ -72,9 +72,12 @@ public class LevelManager : MonoBehaviour
 
     void HandleEnemyDeath(GameObject enemy)
     {
+        Debug.Log("ennemie touché");
         if (activeEnemies.Contains(enemy))
         {
             activeEnemies.Remove(enemy);
+            Debug.Log("ennemie mort");
+
         }
     }
 }
