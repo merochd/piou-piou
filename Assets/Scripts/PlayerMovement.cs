@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Player Movement Settings")]
     [SerializeField] private float speed = 5f; // Adjustable movement speed
 
     private Camera _mainCamera; // Reference to the main camera

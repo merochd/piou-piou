@@ -2,70 +2,79 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnerTest : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    public GameObject enemyPrefab;         // Préfabriqué pour les ennemis
-    public Transform[] spawnPoints;        // Points de spawn (grille)
-    //public float initialSpawnInterval = 6f; // Intervalle entre les vagues au début
-    public float delayBetweenEnemies = 1f;  // Délai entre chaque ennemi dans une vague
-    public int totalLevels = 5;            // Nombre total de niveaux
-    public int wavesPerLevel = 10;         // Nombre de vagues par niveau
-    public int ennemyCounter = 0;
+    [Header("Level Settings")]
+    public int totalLevels = 3; // Nombre total de niveaux
+    public int wavesPerLevel = 10; // Nombre de vagues par niveau
+    public int enemiesPerWave = 12; // Nombre d'ennemis par vague
+    public float timeBetweenLevels = 5f; // Temps entre les niveaux
 
-    private int currentLevel = 1;          // Niveau actuel
-    //private float spawnInterval;           // Intervalle dynamique entre les vagues
+    [Header("References")]
+    public GameObject enemyPrefab; // Préfab de l'ennemi
+    public Transform[] spawnPoints; // Points de spawn
 
-    private void Start()
+    private int currentLevel = 0;
+    private int currentWave = 0;
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
+    void Start()
     {
-        //spawnInterval = initialSpawnInterval; // Intervalle initial
-        StartLevel();
+        StartCoroutine(StartLevelSequence());
     }
 
-    public void StartLevel()
+    IEnumerator StartLevelSequence()
     {
-        // Boucle de progression par niveau
-        while (currentLevel <= totalLevels)
+        for (currentLevel = 1; currentLevel <= totalLevels; currentLevel++)
         {
-            if (ennemyCounter == 0)
-            {
-                
-            }
-            for (int wave = 1; wave <= wavesPerLevel; wave++)
-            {
-                                                                                // Génère la vague actuelle en grille
-                StartCoroutine(SpawnWaveInGrid(wave));
-                
-                                                                                // Réduit le temps entre les vagues pour augmenter la difficulté
-                                                                                //spawnInterval *= 0.95f; // Réduit de 5 % pour chaque vague
-                                                                                //yield return new WaitForSeconds(spawnInterval);
-            }
-            currentLevel++;
-                                                                                //spawnInterval = initialSpawnInterval; // Réinitialise l'intervalle entre vagues pour le prochain niveau
+            Debug.Log("Starting Level: " + currentLevel);
+            yield return StartCoroutine(StartWaveSequence());
+            Debug.Log("Level " + currentLevel + " completed.");
+            yield return new WaitForSeconds(timeBetweenLevels);
+        }
+        Debug.Log("All levels completed!");
+    }
+
+    IEnumerator StartWaveSequence()
+    {
+        for (currentWave = 1; currentWave <= wavesPerLevel; currentWave++)
+        {
+            Debug.Log("Starting Wave: " + currentWave);
+
+            // Spawn all enemies for the wave
+            SpawnWave();
+
+            // Wait until all enemies are destroyed
+            yield return new WaitUntil(() => activeEnemies.Count == 0);
+            Debug.Log("Wave " + currentWave + " completed.");
         }
     }
 
-    IEnumerator SpawnWaveInGrid(int waveNumber)
+    void SpawnWave()
     {
-        // Configuration de la grille : nombre de lignes et colonnes
-        int rows = 2; // Modifier pour plus de lignes
-        int cols = spawnPoints.Length / rows; // Nombre de colonnes calculé en fonction des spawn points
+        activeEnemies.Clear();
 
-        // Délai entre chaque ennemi (peut être ajusté avec la difficulté)
-        float currentDelay = delayBetweenEnemies * Mathf.Pow(0.95f, waveNumber - 1);
-
-        // Parcourt la grille et instancie les ennemis
-        for (int row = 0; row < rows; row++)
+        foreach (Transform spawnPoint in spawnPoints)
         {
-            for (int col = 0; col < cols; col++)
+            if (activeEnemies.Count >= enemiesPerWave) break;
+
+            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            activeEnemies.Add(enemy);
+
+            // Register enemy death
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+            if (enemyController != null)
             {
-                int spawnIndex = row * cols + col;
-                if (spawnIndex < spawnPoints.Length) // Vérifie que l'index reste valide
-                {
-                    Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-                    ennemyCounter++;
-                    yield return new WaitForSeconds(currentDelay); // Temps d'attente entre chaque ennemi
-                }
+                enemyController.OnEnemyDeath += HandleEnemyDeath;
             }
+        }
+    }
+
+    void HandleEnemyDeath(GameObject enemy)
+    {
+        if (activeEnemies.Contains(enemy))
+        {
+            activeEnemies.Remove(enemy);
         }
     }
 }
