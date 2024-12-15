@@ -13,6 +13,7 @@ public class PlayerShoot : MonoBehaviour
     public float timerShoot;
     public float abilityTimer;
     public bool canShoot = true;
+    public bool canCast = true;
     private void Update()
     {
         if (canShoot == false)
@@ -25,9 +26,18 @@ public class PlayerShoot : MonoBehaviour
             {
                 canShoot = true;
             }
-            if (abilityTimer > 0)
+
+        }
+
+        if (canCast == false)
+        {
+            if (abilityTimer >= 0)
             {
                 abilityTimer -= Time.deltaTime;
+            }
+            else
+            {
+                canCast = true;
             }
         }
         if (Input.GetKey(KeyCode.Space)) 
@@ -56,9 +66,10 @@ public class PlayerShoot : MonoBehaviour
     }
     private void Shield()
     {
-        if (abilityTimer <= 0)
+        if (canCast)
         {
             Instantiate(shieldPrefab, transform.position, Quaternion.identity);
+            canCast = false;
             abilityTimer = shieldCooldown;
         }
     }

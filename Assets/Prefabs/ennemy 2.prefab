@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2472373675244372917}
@@ -94,6 +94,7 @@ MonoBehaviour:
   screenTopFraction: 0.25
   moveSpeed: 3
   shootInterval: 3.5
+  HP: 5
   projectilePrefab: {fileID: 2931330602554103348, guid: 30671f18ebddc6740ae50b7b1f459ba7, type: 3}
 --- !u!1001 &3846202489332447851
 PrefabInstance:

@@ -93,10 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4906691323303790874}
-  - component: {fileID: -4123197997817565301}
-  - component: {fileID: 5983050644543906286}
   - component: {fileID: -4155458889466357465}
   - component: {fileID: 8857080300782503325}
+  - component: {fileID: -3558210416755313474}
   m_Layer: 0
   m_Name: bouclier
   m_TagString: Untagged
@@ -120,33 +119,6 @@ Transform:
   - {fileID: 403169364665975139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4123197997817565301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3852499393498888915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
-    _objectReferences: []
---- !u!114 &5983050644543906286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3852499393498888915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da57800110fd423681b87299d829e80b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-4155458889466357465
 Rigidbody2D:
   serializedVersion: 4
@@ -219,3 +191,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.661319, y: 1.3862572}
   m_EdgeRadius: 0
+--- !u!114 &-3558210416755313474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852499393498888915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10704b77487e5e640aaa1622cdaaadee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 3
+  duration: 3

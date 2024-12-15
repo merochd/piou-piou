@@ -7,6 +7,7 @@ public class HomingEnemyController : MonoBehaviour
     public float screenTopFraction = 0.33f; // Le tiers supérieur de l'écran
     public float moveSpeed = 3f; // Vitesse du déplacement vers la position cible
     public float shootInterval = 1f; // Temps entre chaque tir (en secondes)
+    [SerializeField] private int HP; 
 
     [Header("Projectile Settings")]
     public GameObject projectilePrefab; // Préfab de projectile
@@ -55,6 +56,11 @@ public class HomingEnemyController : MonoBehaviour
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, directionToPlayer);
             transform.rotation = targetRotation;
+        }
+
+        if (HP <= 0)
+        {
+            Die();
         }
     }
 
@@ -132,7 +138,7 @@ public class HomingEnemyController : MonoBehaviour
         }
         if (other.CompareTag("projectile"))
         {
-            Die();
+            HP -= 1;
         }
     }
 }

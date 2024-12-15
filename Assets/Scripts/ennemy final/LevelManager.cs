@@ -31,8 +31,8 @@ public class LevelManager : MonoBehaviour
             gameDesign[x] = new int[2];
         }
         
-        gameDesign[0][0] = 20 ;
-        gameDesign[0][1] = 20 ;
+        gameDesign[0][0] = 100 ;
+        gameDesign[0][1] = 0 ;
         gameDesign[1][0] = 8 ;
         gameDesign[1][1] = 2;
         gameDesign[2][0] = 10 ;
@@ -43,13 +43,13 @@ public class LevelManager : MonoBehaviour
         gameDesign[4][1] = 10 ;
         gameDesign[5][0] = 8 ;
         gameDesign[5][1] = 12 ;
-        gameDesign[6][0] = 11 ;
-        gameDesign[6][1] = 11 ;
-        gameDesign[7][0] = 12 ;
-        gameDesign[7][1] = 12 ;
-        gameDesign[8][0] = 0 ;
-        gameDesign[8][1] = 20 ;
-        gameDesign[9][0] = 20 ;
+        gameDesign[6][0] = 12 ;
+        gameDesign[6][1] = 12 ;
+        gameDesign[7][0] = 14 ;
+        gameDesign[7][1] = 14 ;
+        gameDesign[8][0] = 20 ;
+        gameDesign[8][1] = 0 ;
+        gameDesign[9][0] = 0 ;
         gameDesign[9][1] = 20 ;
     }
 
@@ -86,45 +86,28 @@ public class LevelManager : MonoBehaviour
     void SpawnWave()
     {
         activeEnemies.Clear();
-        int counter = 0;
 
-        foreach (Transform spawnPoint in spawnPoints)
+        for (int i = 0; i <basicEnemiesPerWave * (currentLevel * 0.5); i++)
         {
-            if (counter >= basicEnemiesPerWave) break;
-
-            GameObject enemy = Instantiate(basicEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            int temp = Random.Range(0,spawnPoints.Length -1);
+            GameObject enemy = Instantiate(basicEnemyPrefab, spawnPoints[temp].position, spawnPoints[temp].rotation);
             activeEnemies.Add(enemy);
-            counter++;
 
             // Register enemy death
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            HomingEnemyController homingEnemyController = enemy.GetComponent<HomingEnemyController>();
             if (enemyController != null)
             {
                 enemyController.OnEnemyDeath += HandleEnemyDeath;
-            }            
-            if (homingEnemyController != null)
-            {
-                homingEnemyController.OnEnemyDeath += HandleEnemyDeath;
             }
         }
-
-        counter = 0;
-        foreach (Transform spawnPoint in spawnPoints)
+        for (int i = 0; i <sniperEnemiesPerWave * (currentLevel * 0.5); i++)
         {
-            if (counter >= sniperEnemiesPerWave) break;
-
-            GameObject enemy = Instantiate(sniperEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            int temp = Random.Range(0,spawnPoints.Length -1);
+            GameObject enemy = Instantiate(sniperEnemyPrefab, spawnPoints[temp].position, spawnPoints[temp].rotation);
             activeEnemies.Add(enemy);
-            counter++;
 
             // Register enemy death
-            EnemyController enemyController = enemy.GetComponent<EnemyController>();
             HomingEnemyController homingEnemyController = enemy.GetComponent<HomingEnemyController>();
-            if (enemyController != null)
-            {
-                enemyController.OnEnemyDeath += HandleEnemyDeath;
-            }            
             if (homingEnemyController != null)
             {
                 homingEnemyController.OnEnemyDeath += HandleEnemyDeath;

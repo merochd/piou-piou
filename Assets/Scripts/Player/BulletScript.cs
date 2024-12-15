@@ -25,9 +25,7 @@ public class BulletScript : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
-            // Détruit l'ennemi
-            Destroy(other.gameObject);
+            
 
             // Si c'est une balle piercing, ne fais rien (elle continue)
             if (bulletType == 1)

@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float screenTopFraction = 0.33f; // Le tiers supérieur de l'écran
     public float moveSpeed = 3f; // Vitesse du déplacement vers la position cible
     public float shootInterval = 1f; // Temps entre chaque tir (en secondes)
+    [SerializeField] private int HP; 
 
     [Header("Projectile Settings")]
     public GameObject projectilePrefab; // Préfab de projectile
@@ -37,6 +38,10 @@ public class EnemyController : MonoBehaviour
         if (!hasReachedTarget)
         {
             MoveToTargetPosition();
+        }
+        if (HP <= 0)
+        {
+            Die();
         }
     }
 
@@ -107,7 +112,7 @@ public class EnemyController : MonoBehaviour
         }
         if (other.CompareTag("projectile"))
         {
-            Die();
+            HP -= 1;
         }
     }
     

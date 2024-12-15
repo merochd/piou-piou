@@ -399,37 +399,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8749986348093064960, guid: 657b04f3a4f379c4e84e2c24a825d387, type: 3}
   m_PrefabInstance: {fileID: 1942574726}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &941564333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941564330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
-    _objectReferences:
-    - {fileID: 11400000, guid: cfb8e1a2141c217418365b22fa29eb4e, type: 2}
---- !u!114 &941564334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 941564330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
-    _objectReferences: []
 --- !u!114 &941564337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,9 +413,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalLevels: 5
   wavesPerLevel: 10
-  enemiesPerWave: 14
+  basicEnemiesPerWave: 12
+  sniperEnemiesPerWave: 12
   timeBetweenLevels: 5
-  enemyPrefab: {fileID: 3829684266926334295, guid: a8d6afbd87789c84e91312710b63c53b, type: 3}
+  basicEnemyPrefab: {fileID: 5632670622632045077, guid: c37b3dada1f70514aad67c32c25c7dc2, type: 3}
+  sniperEnemyPrefab: {fileID: 3829684266926334295, guid: a8d6afbd87789c84e91312710b63c53b, type: 3}
   spawnPoints:
   - {fileID: 1796146954}
   - {fileID: 189420875}
@@ -619,12 +590,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8749986348093064960, guid: 657b04f3a4f379c4e84e2c24a825d387, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 941564334}
-    - targetCorrespondingSourceObject: {fileID: 8749986348093064960, guid: 657b04f3a4f379c4e84e2c24a825d387, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 941564333}
-    - targetCorrespondingSourceObject: {fileID: 8749986348093064960, guid: 657b04f3a4f379c4e84e2c24a825d387, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 941564337}
   m_SourcePrefab: {fileID: 100100000, guid: 657b04f3a4f379c4e84e2c24a825d387, type: 3}
 --- !u!4 &1985704943 stripped
@@ -646,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8857407694311577272, guid: d88a5775e89233547be968768b0fbcae, type: 3}
       propertyPath: shieldCooldown
-      value: 0.5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8857407694311577272, guid: d88a5775e89233547be968768b0fbcae, type: 3}
       propertyPath: pearcingCooldown

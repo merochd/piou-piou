@@ -28,7 +28,7 @@ public class ProjectileController : MonoBehaviour
         // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);  // Détruit le player
+            //Destroy(other.gameObject);  // Détruit le player
             Debug.Log("touché!!!");
         }
     }
