@@ -67,7 +67,7 @@ public class HomingEnemyController : MonoBehaviour
     void SetRandomTargetPosition()
     {
         // Obtenir les limites de l'écran en coordonnées monde
-        Vector3 screenBottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 screenBottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0.1f, 0, 0));
         Vector3 screenTopRight = mainCamera.ViewportToWorldPoint(new Vector3(0.95f, 0.9f, 0));
 
         // Calculer les limites pour le tiers supérieur
