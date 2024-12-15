@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 Destroy(gameObject);  // Détruit le player
                 Debug.Log("vous etes mort !");
+                for (float i = 0f; i < 15f;)
+                {
+                    i += Time.deltaTime;
+                }
+                SceneManager.LoadScene("scene mehdi");
                 
             }
             else
