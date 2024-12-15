@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
             gameDesign[x] = new int[2];
         }
         
-        gameDesign[0][0] = 100 ;
+        gameDesign[0][0] = 10 ;
         gameDesign[0][1] = 0 ;
         gameDesign[1][0] = 8 ;
         gameDesign[1][1] = 2;

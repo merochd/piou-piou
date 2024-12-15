@@ -83,5 +83,3 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 }
-
-//faire le cd par type de balle

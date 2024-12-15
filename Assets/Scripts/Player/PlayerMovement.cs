@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f; // Adjustable movement speed
 
     private Camera _mainCamera; // Reference to the main camera
+    private bool GodMode = false;
 
     private void Start()
     {
@@ -26,6 +27,32 @@ public class PlayerMovement : MonoBehaviour
 
         // Clamp the player position to stay within the screen bounds
         ClampPositionToScreen();
+        
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            GodMode = !GodMode;
+            Debug.Log("GodMode value: " + GodMode + "\\n Amusez-vous !");
+        }
+        
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
+        if (other.CompareTag("enemy") | other.CompareTag("Ennemy Bullet"))
+        {
+            Debug.Log("Touché !!!");
+            if (!GodMode)
+            {
+                Destroy(gameObject);  // Détruit le player
+                Debug.Log("vous etes mort !");
+                
+            }
+            else
+            {
+                Debug.Log("''GodMode'' est activé, vous ne mourrez pas !");
+            }
+        }
     }
 
     private void ClampPositionToScreen()

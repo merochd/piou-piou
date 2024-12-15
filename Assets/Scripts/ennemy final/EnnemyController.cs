@@ -105,11 +105,6 @@ public class EnemyController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Vérifie si l'objet avec lequel l'ennemi entre en collision est un projectile du joueur
-        if (other.CompareTag("Player"))
-        {
-            Destroy(other.gameObject);  // Détruit le player
-        }
         if (other.CompareTag("projectile"))
         {
             HP -= 1;
